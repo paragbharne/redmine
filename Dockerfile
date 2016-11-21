@@ -22,7 +22,7 @@ RUN chown -R www-data:www-data /var/lib/svn
 RUN a2enmod dav_svn
 ADD dav_svn.conf /etc/apache2/mods-enabled/
 
-RUN sudo a2enmod authz_svn
+RUN a2enmod authz_svn
 
 RUN htpasswd -c /etc/apache2/dav_svn.passwd redmine1
 
