@@ -59,7 +59,7 @@ RUN ln -s /usr/share/redmine/public /var/www/html/redmine
 ##MySQL##
 
 WORKDIR /usr/share/redmine/
-ADD database.yml redmine/config/
+ADD database.yml /usr/share/redmine/config/
 
 ##Configuration##
 
