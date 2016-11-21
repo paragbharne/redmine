@@ -65,6 +65,7 @@ ADD database.yml redmine/config/
 RUN cd /usr/share/redmine/
 RUN gem update
 RUN gem install bundler
+RUN gem install rails
 RUN bundle install --without development test postgresql sqlite
 RUN rake generate_secret_token
 RUN RAILS_ENV=production rake db:migrate 
