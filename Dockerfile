@@ -50,7 +50,8 @@ RUN cd /usr/share
 RUN wget http://www.redmine.org/releases/redmine-2.5.2.tar.gz
 RUN tar xvfz redmine-2.5.2.tar.gz
 RUN rm redmine-2.5.2.tar.gz
-RUN mv redmine-2.5.2 redmine /usr/share/redmine
+RUN mv redmine-2.5.2 redmine
+RUN cp redmine /usr/share/
 RUN chown -R root:root /usr/share/redmine
 RUN chown www-data /usr/share/redmine/config/environment.rb
 RUN ln -s /usr/share/redmine/public /var/www/html/redmine
