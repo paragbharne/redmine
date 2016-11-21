@@ -72,7 +72,7 @@ RUN gem install mime-types -v 2.6.2
 RUN bundle install --without development test postgresql sqlite
 RUN rake generate_secret_token
 RUN RAILS_ENV=production rake db:migrate 
-RUN RAILS_ENV=production rake redmine:load_default_data
+#RUN RAILS_ENV=production rake redmine:load_default_data
 RUN mkdir public/plugin_assets
 RUN chown -R www-data:www-data files log tmp public/plugin_assets
 RUN chmod -R 755 files log tmp public/plugin_assets
