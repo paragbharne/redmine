@@ -5,7 +5,7 @@ MAINTAINER Parag Bharne <pari.bharne@gmail.com>
 
 RUN apt-get update && sudo apt-get upgrade -y
 RUN apt-get install -y apache2
-RUN apt-get install apache2 php5 libapache2-mod-php5
+RUN apt-get install -y apache2 php5 libapache2-mod-php5
 RUN apt-get install -y libaprutil1-dev libmysqlclient-dev libmagickcore-dev libmagickwand-dev curl git-core gitolite patch build-essential 		bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev sqlite3 libsqlite3-dev autotools-dev libxslt1-dev libyaml-0-2 autoconf automake 		libreadline6-dev libyaml-dev libtool imagemagick apache2-utils ssh zip libicu-dev libssh2-1 libssh2-1-dev cmake libgpg-error-dev 		subversion libapache2-svn
 RUN a2enmod ssl
 ADD apache.key /etc/apache2/ssl
