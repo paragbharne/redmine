@@ -96,7 +96,6 @@ RUN a2ensite 000-default.conf
 ADD configuration.yml /usr/share/redmine/config/
 
 RUN a2enmod passenger
-RUN service apache2 restart
 
 EXPOSE 80 443
 ENTRYPOINT service apache2 restart && sleep 3600
