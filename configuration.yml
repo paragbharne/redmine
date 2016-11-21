@@ -7,7 +7,7 @@ production:
     domain: "smtp.gmail.com"
     authentication: :plain
     user_name: "pari.bharne@gmail.com"
-    password: "******"
+    password: ""
 
 
 
