@@ -101,5 +101,6 @@ RUN a2ensite 000-default.conf
 RUN a2ensite default-ssl
 
 
-EXPOSE 80 443
-ENTRYPOINT service apache2 restart && sleep 3600
+EXPOSE 80
+EXPOSE 443
+ENTRYPOINT service apache2 restart && bash
