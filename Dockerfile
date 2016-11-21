@@ -81,7 +81,7 @@ RUN chmod -R 755 files log tmp public/plugin_assets
 ##Installing Phusion Passenger##
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
-RUN apt-get install apt-transport-https ca-certificates
+RUN apt-get -y  install apt-transport-https ca-certificates
 
 ADD passenger.list /etc/apt/sources.list.d/
 
