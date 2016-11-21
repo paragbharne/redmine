@@ -72,6 +72,8 @@ RUN gem install mime-types -v 2.6.2
 RUN bundle install --without development test postgresql sqlite
 RUN rake generate_secret_token
 RUN RAILS_ENV=production rake db:migrate 
+
+RUN bundle exec rake db:migrate RAILS_ENV=production
 #RUN RAILS_ENV=production rake redmine:load_default_data
 RUN mkdir public/plugin_assets
 RUN chown -R www-data:www-data files log tmp public/plugin_assets
@@ -88,7 +90,7 @@ ADD passenger.list /etc/apt/sources.list.d/
 RUN chown root: /etc/apt/sources.list.d/passenger.list
 RUN chmod 600 /etc/apt/sources.list.d/passenger.list
 
-RUN apt-get update
+#RUN apt-get update
 RUN apt-get install -y  libapache2-mod-passenger
 
 ADD 000-default.conf /etc/apache2/sites-available/
