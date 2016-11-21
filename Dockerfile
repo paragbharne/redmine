@@ -63,7 +63,8 @@ ADD database.yml redmine/config/
 ##Configuration##
 
 WORKDIR /usr/share/redmine/
-RUN gem install mime-types-data -v '3.2016.0521'
+RUN gem install mime-types -v 2.6.2
+#RUN gem install mime-types-data -v '3.2016.0521'
 #RUN cd /usr/share/redmine/
 #RUN gem update
 #RUN gem install bundler
