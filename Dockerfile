@@ -89,7 +89,7 @@ RUN chown root: /etc/apt/sources.list.d/passenger.list
 RUN chmod 600 /etc/apt/sources.list.d/passenger.list
 
 RUN apt-get update
-RUN apt-get install libapache2-mod-passenger
+RUN apt-get install -y  libapache2-mod-passenger
 
 ADD 000-default.conf /etc/apache2/sites-available/
 RUN a2ensite 000-default.conf
