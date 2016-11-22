@@ -7,16 +7,17 @@ RUN apt-get update && sudo apt-get upgrade -y
 RUN apt-get install -y apache2
 RUN apt-get install -y apache2 php5 libapache2-mod-php5
 RUN apt-get install -y libaprutil1-dev libmysqlclient-dev libmagickcore-dev libmagickwand-dev curl git-core gitolite patch build-essential 		bison zlib1g-dev libssl-dev libxml2-dev libxml2-dev sqlite3 libsqlite3-dev autotools-dev libxslt1-dev libyaml-0-2 autoconf automake 		libreadline6-dev libyaml-dev libtool imagemagick apache2-utils ssh zip libicu-dev libssh2-1 libssh2-1-dev cmake libgpg-error-dev 		subversion libapache2-svn
-RUN a2enmod ssl
-ADD apache.key /etc/apache2/ssl
-ADD apache.crt /etc/apache2/ssl
+RUN apt-get install -y mysql-client
+#RUN a2enmod ssl
+#ADD apache.key /etc/apache2/ssl
+#ADD apache.crt /etc/apache2/ssl
 
-ADD default-ssl.conf /etc/apache2/sites-available/
-RUN a2ensite 000-default.conf
-RUN a2ensite default-ssl
+#ADD default-ssl.conf /etc/apache2/sites-available/
+#RUN a2ensite 000-default.conf
+#RUN a2ensite default-ssl
 
 ## Configure Subversion ##
-
+RUN apt-get install -y subversion libapache2-svn
 RUN mkdir -p /var/lib/svn
 RUN chown -R www-data:www-data /var/lib/svn
 RUN a2enmod dav_svn
@@ -24,9 +25,9 @@ ADD dav_svn.conf /etc/apache2/mods-enabled/
 
 #RUN a2enmod authz_svn
 
-RUN htpasswd -c /etc/apache2/dav_svn.passwd redmine1
-
-RUN svnadmin create --fs-type fsfs /var/lib/svn/myrepository1
+RUN htpasswd -c /etc/apache2/dav_svn.passwd redmine
+ADD dav_svn.passwd /etc/apache2/
+RUN svnadmin create --fs-type fsfs /var/lib/svn/my_repository
 RUN chown -R www-data:www-data /var/lib/svn
 ADD dav_svn.authz /etc/apache2/
 
@@ -75,6 +76,7 @@ RUN RAILS_ENV=production rake db:migrate
 
 RUN bundle exec rake db:migrate RAILS_ENV=production
 #RUN RAILS_ENV=production rake redmine:load_default_data
+RUN RAILS_ENV=production REDMINE_LANG=fr bundle exec rake redmine:load_default_data
 RUN mkdir public/plugin_assets
 RUN chown -R www-data:www-data files log tmp public/plugin_assets
 RUN chmod -R 755 files log tmp public/plugin_assets
@@ -97,11 +99,14 @@ ADD 000-default.conf /etc/apache2/sites-available/
 RUN a2ensite 000-default.conf
 ADD configuration.yml /usr/share/redmine/config/
 
-RUN a2enmod passenger
+
+RUN chown -R www-data:www-data /var/www/html/redmine
+RUN chown -R www-data:www-data /usr/share/redmine
 
 RUN a2ensite 000-default.conf
-RUN a2ensite default-ssl
+#RUN a2ensite default-ssl
 
+RUN a2enmod passenger
 
 EXPOSE 80
 EXPOSE 443

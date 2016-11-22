@@ -1,3 +1,2 @@
-[Myrepository:/]
- redmine1 = r
-
+[my_repository:/]
+redmine = r
