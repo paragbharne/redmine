@@ -1,37 +1,37 @@
    # default configuration options for all environments
    default:
      email_delivery:
-       delivery_method: smtp
+       delivery_method: :smtp
        smtp_settings:
          address: smtp.gmail.com
          port: 587
          domain: smtp.gmail.com
          authentication: login
-        user_name: "pai.bharne@gmail.com"
-        password: "9096948858123456"
+         user_name: "pai.bharne@gmail.com"
+         password: "9096948858123456"
         
-    attachments_storage_path:
-    autologin_cookie_name:
-    autologin_cookie_path:
-    autologin_cookie_secure:
-    scm_mercurial_command:
-    scm_git_command:
-    scm_cvs_command:
-    scm_bazaar_command:
-    scm_darcs_command:
-    database_cipher_key:
-    rmagick_font_path:
-  production:
-  production:
-    email_delivery:
-      delivery_method: smtp
-      smtp_settings:
-        enable_starttls_auto: true
-        address: "smtp.gmail.com" 
-        port: '587'
-        domain: "smtp.gmail.com"
-        authentication: plain
-        user_name: "pari.bharne@gmail.com"
-        password: "9096948858123456" 
+   # attachments_storage_path:
+   # autologin_cookie_name:
+   # autologin_cookie_path:
+   # autologin_cookie_secure:
+   # scm_mercurial_command:
+   # scm_git_command:
+   # scm_cvs_command:
+   # scm_bazaar_command:
+  #  scm_darcs_command:
+   # database_cipher_key:
+    #rmagick_font_path:
+ # production:
+ # production:
+ #   email_delivery:
+ #     delivery_method: smtp
+ #     smtp_settings:
+  #      enable_starttls_auto: true
+   #     address: "smtp.gmail.com" 
+    #    port: '587'
+     #   domain: "smtp.gmail.com"
+   #     authentication: plain
+    #    user_name: "pari.bharne@gmail.com"
+     #   password: "9096948858123456" 
         
-  development:
+ ### development:

@@ -1,8 +1,8 @@
 production:
   adapter: mysql2
-  database: redmine1
-  host: 192.168.1.131
-  username: redmine1
+  database: redmine
+  host: 192.168.1.18
+  username: redmine
   password: password
   encoding: utf8
 
